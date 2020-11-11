@@ -1,6 +1,8 @@
 package com.gruppe21.game.board.chancecard;
 
 import com.gruppe21.game.Game;
+import com.gruppe21.game.board.Square;
+import com.gruppe21.player.BankBalance;
 
 public class ChanceCardMoney extends ChanceCard {
     private int money;
@@ -51,7 +53,14 @@ public class ChanceCardMoney extends ChanceCard {
 
     //Current player moves to StartSquare and receives 2M
     private void startCard(Game game) {
+        int playerIndex = game.getCurrentPlayer();
+        int startSquareIndex = 1; // Change in future
+        BankBalance playerModifyBalance = game.getPlayers()[playerIndex].getBankBalance();
 
+        Square square = game.getBoard().getSquareAtNumber(startSquareIndex);
+        game.movePlayer(playerIndex, square);
+
+        playerModifyBalance.addBalance(+2);
     }
 
     //Current player receives 1M from other players

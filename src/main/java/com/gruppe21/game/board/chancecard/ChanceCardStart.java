@@ -5,6 +5,11 @@ import com.gruppe21.game.board.Square;
 import com.gruppe21.player.BankBalance;
 import com.gruppe21.player.Player;
 
+/** if it's implementet that Game keeps track of when
+ * startsquare has been passed, this method can be
+ * moved to ChanceCardMove and class ChanceCardStart
+ * can be removed.
+ */
 public class ChanceCardStart extends ChanceCard {
     int money;
 

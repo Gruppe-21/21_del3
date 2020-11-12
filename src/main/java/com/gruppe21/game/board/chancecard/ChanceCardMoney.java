@@ -10,11 +10,11 @@ public class ChanceCardMoney extends ChanceCard {
     private boolean isHomework;
     private boolean isBirthday;
 
-    public ChanceCardMoney(String description, int money, boolean isPayToBank, boolean isReceiveMoneyFromBank, boolean isBirthday) {
+    public ChanceCardMoney(String description, int money, boolean isPayToBank, boolean isHomework, boolean isBirthday) {
         super(description);
         this.money = money;
         this.isPayToBank = isPayToBank;
-        this.isHomework = isReceiveMoneyFromBank;
+        this.isHomework = isHomework;
         this.isBirthday = isBirthday;
     }
 
@@ -24,7 +24,7 @@ public class ChanceCardMoney extends ChanceCard {
         if(isPayToBank) {
             tooMuchCandy(game, player);
         } else {
-            finishedHomework(game,player);  // isReceivemoneyFromBank
+            finishedHomework(game,player);  // isHomework
         }
     }
 

@@ -1,7 +1,7 @@
 package com.gruppe21.game.board.chancecard;
 
 import com.gruppe21.game.Game;
-import com.gruppe21.game.board.Square;
+import com.gruppe21.game.board.squares.Square;
 import com.gruppe21.player.BankBalance;
 import com.gruppe21.player.Player;
 

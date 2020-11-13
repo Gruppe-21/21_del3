@@ -4,81 +4,36 @@ import com.gruppe21.game.Game;
 import com.gruppe21.player.BankBalance;
 import com.gruppe21.player.Player;
 
+import java.util.ArrayList;
+
 public class ChanceCardMoney extends ChanceCard {
     private int money;
-    private boolean isPayToBank;
-    private boolean isHomework;
-    private boolean isBirthday;
-
-    public ChanceCardMoney(String description, int money, boolean isPayToBank, boolean isHomework, boolean isBirthday) {
+    public ChanceCardMoney(String description, int money) {
         super(description);
         this.money = money;
-        this.isPayToBank = isPayToBank;
-        this.isHomework = isHomework;
-        this.isBirthday = isBirthday;
     }
 
     @Override
-    public void use(Game game,Player player) {
+    public void use(Game game, Player[] players, Player cardUser) {
 
-        if(isPayToBank) {
-            tooMuchCandy(game, player);
-        } else {
-            finishedHomework(game,player);  // isHomework
+        game.getGuiWrapper().showMessage(description);
+        if (players == null){
+            cardUser.getBankBalance().addBalance(money);
         }
-    }
-
-    @Override
-    public void use(Game game, Player player,Player[] players){
-            birthday(game,players,player);  // isBirthday
-    }
-
-
-    //Current player loses money
-    private void tooMuchCandy(Game game, Player player) {
-        int modifyBalance = money; // -2M
-        BankBalance playerCurrentBalance = player.getBankBalance();
-
-        game.getGuiWrapper().showMessage(description);
-
-        playerCurrentBalance.addBalance(modifyBalance);
-    }
-
-    //Current player receives money
-    private void finishedHomework(Game game,Player player) {
-        int modifyBalance = money; // +2M
-        BankBalance playerCurrentBalance = player.getBankBalance();
-
-        game.getGuiWrapper().showMessage(description);
-
-        playerCurrentBalance.addBalance(modifyBalance);
-    }
-
-    //Current player receives money from other players
-    private void birthday(Game game,Player[] players, Player player) {
-        Player[] payingPlayersArr = new Player[players.length-1];
-        int modifyBalance = money; // +1M
-
-        game.getGuiWrapper().showMessage(description);
-
-        // Filter out the player receiving money
-        int i = 0,j = 0;
-        while (i < players.length) {
-            if(players[i] != player){
-                payingPlayersArr[j] = players[i];
-                j++;
+        else {
+            ArrayList<Player> notEnoughMoney = new ArrayList<>(4);
+            for (Player player : players) {
+                if (player == cardUser) continue;
+                if (player.getBankBalance().getBalance() < 0){
+                    notEnoughMoney.add(player);
+                }
+                else cardUser.getBankBalance().addBalance(player.getBankBalance().getBalance() - player.getBankBalance().addBalance(money));
             }
-            i++;
-        }
 
-        for (Player payingPlayer : payingPlayersArr) {
-            // paying players lose money
-            BankBalance payingPlayerBalance = payingPlayer.getBankBalance();
-            payingPlayerBalance.addBalance(-1 * modifyBalance); // (-1M)
-
-            // receiving player gain money
-            BankBalance receivingPlayerBalance = player.getBankBalance();
-            receivingPlayerBalance.addBalance(modifyBalance);// (+1M)
+            //Todo: Should evaluate each person and only then end the game if anyone have gone bankrupt.
+            for (Player player: notEnoughMoney) {
+                cardUser.getBankBalance().addBalance(player.getBankBalance().getBalance() - player.getBankBalance().addBalance(money));
+            }
         }
     }
 

@@ -1,7 +1,6 @@
 package com.gruppe21.game.board.chancecard;
 
 import com.gruppe21.game.Game;
-import com.gruppe21.player.BankBalance;
 import com.gruppe21.player.Player;
 
 import java.util.ArrayList;

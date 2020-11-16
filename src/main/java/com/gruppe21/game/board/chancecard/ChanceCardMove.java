@@ -31,7 +31,7 @@ public class ChanceCardMove extends ChanceCard {
         } else if(isMoveUpTo) {
             moveUpTo(game,playerIndex);
         } else if(isFigure) {
-            giveCardToFigure(game,playerIndex);
+            giveCardToFigure(game,playerIndex,cardUser);
         }else{
             move(game,playerIndex);
         }

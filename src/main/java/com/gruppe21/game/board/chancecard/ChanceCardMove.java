@@ -2,6 +2,7 @@ package com.gruppe21.game.board.chancecard;
 
 import com.gruppe21.game.Game;
 import com.gruppe21.game.board.squares.Square;
+import com.gruppe21.player.Player;
 import com.gruppe21.utils.localisation.Localisation;
 
 public class ChanceCardMove extends ChanceCard {
@@ -22,9 +23,9 @@ public class ChanceCardMove extends ChanceCard {
 
 
     @Override
-    public void use(Game game, int playerIndex) {
+    public void use(Game game, int playerIndex, Player cardUser) {
         if(isFreeColorSquare){
-            freeColorSquare(game,playerIndex);
+            freeColorSquare(game,playerIndex,cardUser);
         } else if(isTakeCard) {
             takeCard(game,playerIndex);
         } else if(isMoveUpTo) {
@@ -37,7 +38,7 @@ public class ChanceCardMove extends ChanceCard {
     }
     
 
-    private void freeColorSquare(Game game,int playerIndex){
+    private void freeColorSquare(Game game,int playerIndex,Player cardUser){
 
     }
    

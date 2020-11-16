@@ -11,7 +11,7 @@ public abstract class ChanceCard {
     }
 
     // Used in ChanceCardMove
-    public void use(Game game,int playerIndex) {
+    public void use(Game game,int playerIndex,Player cardUser) {
         // Do something
     }
 

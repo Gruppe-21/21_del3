@@ -11,15 +11,20 @@ import com.gruppe21.game.board.squares.Square;
 import com.gruppe21.game.board.SquareType;
 import com.gruppe21.gui.GUIWrapper;
 import com.gruppe21.player.Player;
+import com.gruppe21.utils.localisation.Localisation;
 import com.gruppe21.utils.stringutils.RandomNameGenerator;
+import org.xml.sax.SAXException;
 
+import javax.xml.parsers.ParserConfigurationException;
 import java.awt.*;
+import java.io.IOException;
 import java.util.Arrays;
 
 public class Game {
     private final char MIN_PLAYERS = 2;
     private final char MAX_PLAYERS = 4;
 
+    private Localisation localisation;
     private GUIWrapper guiWrapper;
     private Color[] colors = {Color.RED, Color.BLUE, Color.GREEN};
     private Color[] availableColors = colors.clone();
@@ -76,7 +81,17 @@ public class Game {
     }
 
     private void initGame(Player[] players, Die[] dice, boolean isTest) {
-        board = new Board();
+        localisation = new Localisation();
+        //Todo: Deal with exceptions
+        try {
+            board = new Board();
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        }
         this.isTest = isTest;
         initGUI();
 
@@ -87,14 +102,14 @@ public class Game {
         }
         else{
             while (true){
-                String numPlayers = waitForUserTextInput("Please specify the number of players");
+                String numPlayers = waitForUserTextInput(localisation.getStringValue("requestSpecifyNumPlayers"));
                 try {
                     int numberOfPlayers = Integer.parseInt(numPlayers.trim());
                     if (numberOfPlayers > MAX_PLAYERS || numberOfPlayers < MIN_PLAYERS)
                         throw new Exception("Invalid number of players");
                     players = new Player[numberOfPlayers];
                 } catch (Exception e){
-                    waitForUserAcknowledgement("Must be a number between 2 and 4");
+                    waitForUserAcknowledgement(localisation.getStringValue("invaildNumberOfPlayers"));
                     continue;
                 }
                 break;
@@ -117,9 +132,9 @@ public class Game {
                         providedPlayerName = RandomNameGenerator.GetNameDifferentFrom(players);
 
                     if (!players[i].setName(providedPlayerName.trim()) || players[i].getName().isEmpty())
-                        waitForUserAcknowledgement("Invalid name");
+                        waitForUserAcknowledgement(localisation.getStringValue(""));
                 } catch (Exception e) {
-                    waitForUserAcknowledgement("An error has occurred.");
+                    waitForUserAcknowledgement(localisation.getStringValue("unknownError"));
                 }
             }
 
@@ -127,7 +142,7 @@ public class Game {
         addPlayersToGUI(players);
         waitForUserButtonPress("Welcome to The Quest for Kolding. Press start to begin!", "Start");
     }
-
+½
 
     public boolean playRound() {
         // Wait for player to press "Roll"

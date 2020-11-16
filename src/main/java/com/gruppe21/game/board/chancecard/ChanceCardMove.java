@@ -13,7 +13,7 @@ public class ChanceCardMove extends ChanceCard {
 
     public ChanceCardMove(String description, int moveToSquare, boolean isTakeCard, boolean isFreeColorSquare, boolean isMoveUpTo, boolean isFigure) {
         super(description);
-        this.moveToSquare = moveToSquare; // 0 if none?
+        this.moveToSquare = moveToSquare;
         this.isTakeCard = isTakeCard;
         this.isFreeColorSquare = isFreeColorSquare;
         this.isMoveUpTo = isMoveUpTo;
@@ -38,18 +38,7 @@ public class ChanceCardMove extends ChanceCard {
     
 
     private void freeColorSquare(Game game,int playerIndex){
-//        Player[] playerProperty = game.getPlayers()[playerIndex].getPropertyOwned();
-//        Square square = game.getBoard().getSquareAtNumber(moveToSquare);
-//        // moveToSquare = next free color x;
-//
-//        this.move(game); // move to square with color x
-//
-//        if(square != playerProperty){  // not possible yet
-//            // Pay rent to owner of property
-//        }else{
-//            // Get property for free
-//        }
-//
+
     }
    
     private void takeCard(Game game,int playerIndex) {
@@ -68,9 +57,7 @@ public class ChanceCardMove extends ChanceCard {
             Square square = game.getBoard().getSquareAtNumber(moveToSquare);
             game.movePlayer(playerIndex,square);
         } else {
-            //
-            // draw new chancecard? how?
-            //
+            // Deck.draw();
         }
     }
 

@@ -1,5 +1,6 @@
 package com.gruppe21.utils;
 
+import com.gruppe21.game.board.chancecard.*;
 import com.gruppe21.game.board.squares.*;
 import com.gruppe21.utils.localisation.Localisation;
 import com.gruppe21.utils.xmlutils.XMLUtil;
@@ -122,15 +123,15 @@ public class BoardLoader {
                 break;
             case "homeworkcard":
                 // Add card
-                chanceCards.add(new ChanceCardMoney("You have made your homework, receive 2#.",+2,false,true,false));
+                chanceCards.add(new ChanceCardMoney("You have made your homework, receive 2#.",+2));
                 break;
             case "candycard":
                 // Add card
-                chanceCards.add(new ChanceCardMoney("You have eaten to much candy. Pay 2# to the bank.",-2,true,false,false));
+                chanceCards.add(new ChanceCardMoney("You have eaten to much candy. Pay 2# to the bank.",-2));
                 break;
             case "birthdaycard":
                 // Add card
-                chanceCards.add(new ChanceCardMoney("It's your birthday! Everyone gives you 1#",+1,false,false,false));
+                chanceCards.add(new ChanceCardMoney("It's your birthday! Everyone gives you 1#",+1));
                 break;
             case "startcard":
                 // Add card

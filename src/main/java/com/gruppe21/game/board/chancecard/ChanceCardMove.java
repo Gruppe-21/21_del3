@@ -31,10 +31,8 @@ public class ChanceCardMove extends ChanceCard {
             moveUpTo(game,playerIndex);
         } else if(isFigure) {
             giveCardToFigure(game,playerIndex);
-        }else if (isMoveUpTo){
+        }else{
             move(game,playerIndex);
-        } else {
-            moveStart(game,playerIndex);
         }
     }
     
@@ -108,23 +106,13 @@ public class ChanceCardMove extends ChanceCard {
         // Find out how to check figure
     }
 
+    /**Game keeps track of when
+     * startsquare has been passed*/
     private void move(Game game,int playerIndex) {
         //int playerIndex = game.getCurrentPlayer();
         game.getGuiWrapper().showMessage(description);
         Square square = game.getBoard().getSquareAtNumber(moveToSquare);
         game.movePlayer(playerIndex, square);
     }
-
-
-    /**Game keeps track of when
-     * startsquare has been passed*/
-    private void moveStart(Game game, int playerIndex){
-        int startSquareIndex = 1; // TO-DO: game.getBoard().getSquareAtNumber(start)
-
-        game.getGuiWrapper().showMessage(description);
-        Square square = game.getBoard().getSquareAtNumber(startSquareIndex);
-        game.movePlayer(playerIndex, square);
-    }
-
 
 }

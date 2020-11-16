@@ -27,7 +27,7 @@ public class ChanceCardMoney extends ChanceCard {
                 if (player.getBankBalance().getBalance() < 0){
                     notEnoughMoney.add(player);
                 }
-                else cardUser.getBankBalance().addBalance(player.getBankBalance().getBalance() - player.getBankBalance().addBalance(money));
+                else cardUser.getBankBalance().addBalance(player.getBankBalance().getBalance() - player.getBankBalance().addBalance(-money));
             }
 
             //Todo: Should evaluate each person and only then end the game if anyone have gone bankrupt.

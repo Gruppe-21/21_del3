@@ -2,6 +2,7 @@ package com.gruppe21.game.board.chancecard;
 
 import com.gruppe21.game.Game;
 import com.gruppe21.game.board.Square;
+import com.gruppe21.game.board.squares.Square;
 import com.gruppe21.utils.localisation.Localisation;
 
 public class ChanceCardMove extends ChanceCard {
@@ -110,6 +111,17 @@ public class ChanceCardMove extends ChanceCard {
         //int playerIndex = game.getCurrentPlayer();
         game.getGuiWrapper().showMessage(description);
         Square square = game.getBoard().getSquareAtNumber(moveToSquare);
+        game.movePlayer(playerIndex, square);
+    }
+
+
+    /**Game keeps track of when
+     * startsquare has been passed*/
+    private void moveStart(Game game, int playerIndex){
+        int startSquareIndex = 1; // TO-DO: game.getBoard().getSquareAtNumber(start)
+
+        game.getGuiWrapper().showMessage(description);
+        Square square = game.getBoard().getSquareAtNumber(startSquareIndex);
         game.movePlayer(playerIndex, square);
     }
 

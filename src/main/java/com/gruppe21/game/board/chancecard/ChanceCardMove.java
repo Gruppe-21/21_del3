@@ -1,7 +1,6 @@
 package com.gruppe21.game.board.chancecard;
 
 import com.gruppe21.game.Game;
-import com.gruppe21.game.board.Square;
 import com.gruppe21.game.board.squares.Square;
 import com.gruppe21.utils.localisation.Localisation;
 
@@ -32,8 +31,10 @@ public class ChanceCardMove extends ChanceCard {
             moveUpTo(game,playerIndex);
         } else if(isFigure) {
             giveCardToFigure(game,playerIndex);
-        }else{
+        }else if (isMoveUpTo){
             move(game,playerIndex);
+        } else {
+            moveStart(game,playerIndex);
         }
     }
     

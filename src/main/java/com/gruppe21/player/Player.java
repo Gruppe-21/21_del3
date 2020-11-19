@@ -1,7 +1,6 @@
 package com.gruppe21.player;
 
 import javax.smartcardio.Card;
-import java.util.ArrayList;
 
 public class Player {
     private static final int MAX_NAME_LENGTH = 50;

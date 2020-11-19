@@ -17,7 +17,7 @@ public class Board {
 
     public Board() throws ParserConfigurationException, IOException, SAXException {
 
-        squares = BoardLoader.loadBoard("main_board");
+        squares = (List<Square>) BoardLoader.loadBoard("main_board");
 
         chanceCards = new ArrayList<ChanceCard>();
         chanceCards.add(new ChanceCardGetOutOfJailFree("You can get out of jail for free if needed."));
@@ -31,7 +31,7 @@ public class Board {
     }
 
     public Board(String FileName) throws ParserConfigurationException, IOException, SAXException {
-        squares = BoardLoader.loadBoard(FileName);
+        squares = (List<Square>) BoardLoader.loadBoard(FileName);
 
         chanceCards = new ArrayList<ChanceCard>();
         chanceCards.add(new ChanceCardGetOutOfJailFree("You can get out of jail for free if needed."));

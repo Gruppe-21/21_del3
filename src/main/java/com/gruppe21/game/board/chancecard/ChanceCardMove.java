@@ -58,7 +58,6 @@ public class ChanceCardMove extends ChanceCard {
     }
 
     private void takeCard(Game game,int playerIndex) {
-        // int playerIndex = game.getCurrentPlayer();
         int playerCurrentSquareIndex = game.getPlayers()[playerIndex].getCurrentSquareIndex();
         int moveToSquare;
         String moveButton = Localisation.getInstance().getStringValue("moveButton");

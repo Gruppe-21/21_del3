@@ -76,6 +76,7 @@ public class Player {
     public boolean setCards(String[] ownedCards) {
         ownedCards = new String[]{};
         this.ownedCards = ownedCards;
+        this.cards = cards;
         return true;
     }
 

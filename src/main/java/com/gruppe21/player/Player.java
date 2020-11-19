@@ -12,6 +12,7 @@ public class Player {
     private int age;                    // Int age of player. Youngest player starts.
     public String[] ownedProperties;     // All owned properties of a player
     public String[] ownedCards;           // All currently owned chance cards of a player
+    private OurArrayList <ChanceCard> cards; // Array of chancecards
 
     private int currentSquareIndex;
 

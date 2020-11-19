@@ -88,7 +88,6 @@ public class Player {
 
     //Sets player's age
     public boolean setAge(int age) {
-        if (age < 3) return false;
         if (age < 5) {
             // Possibility to add sout telling ages 5 or older is recommended
             return true;

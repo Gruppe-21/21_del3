@@ -22,6 +22,29 @@
     <sentence label="chance">CHANCE</sentence>
     <sentence label="freeparking">GRATIS PARKERING</sentence>
 
+    <!-- square descriptions -->
+    <sentence label="burgerjointdesc">Du er ankommet til din yndlings Burgerbar. Deres pommes frites er formet som dinosaurer</sentence>
+    <sentence label="pizzeriadesc">Du er ankommet til byens bedste Pizzaria. De er berømte for deres pepperoni pizza</sentence>
+    <sentence label="candystoredesc">Du er ankommet til den farverige Slikbutik. On fredagen har man mulighed for at lave sit eget slik og man vælger selv smagen</sentence>
+    <sentence label="icecreamparlordesc">Du er ankommet i den altid åbne Iskiosk. De har altid 50 forkellige smagsvarianter man kan vælge imellem</sentence>
+    <sentence label="museumdesc">Du er ankommet til Museet. De har i øjeblikket en spændende udstilling om rummet</sentence>
+    <sentence label="librarydesc">Du er ankommet til Biblioteket. De har den største tegneserie samling i hele verden</sentence>
+    <sentence label="skateparkdesc"> Du er ankommet  til Skaterparken. Man har mulighed for at låne en af deres farverige hjelme hvis man mangler én</sentence>
+    <sentence label="swimmingpooldesc">Du er ankommet til Swimmingpoolen. Tag ud og svøm indtil din hud ligner en rosin</sentence>
+    <sentence label="arcadedesc">Du er ankommet til Spillehallen. De har alt fra Pac Man til Donkey Kong</sentence>
+    <sentence label="cinemadesc">Du er ankommet til Biografen. De tilbyder 4D film og gratis popkorn til børn</sentence>
+    <sentence label="toystoredesc">Du er ankommet til Legetøjsbutikken. Deres mest solgte vare er Monopoly Junior</sentence>
+    <sentence label="petstoredesc">Du er ankommet til Dyrehandlen. Hvis du køber et dyr så kan du få et halsbånd med gratis</sentence>
+    <sentence label="bowlingalleydesc">Du er ankommet til Bowlinghallen. Hvis du vinder så får du en gratis sodavand</sentence>
+    <sentence label="zoodesc">Du er ankommet til Zoo. Du kan gå ind og hilse på gederne og ae dem</sentence>
+    <sentence label="waterparkdec">Du er ankommet til Vandland. Du kan vælge imellem enten at få en løve badering eller en enhjøringe badering</sentence>
+    <sentence label="boardwalkdesc">Du er ankommet til Strandpromenaden. Hvis du er heldig så kan du se delfiner lege i havet</sentence>
+    <sentence label="gotoprisondesc">Du skal i Fængsel. Din brik bliver flyttet til Fængsels feltet</sentence>
+    <sentence label="prisondesc">Du er på besøg i Fængslet. Husk at sige hej til de spillere der er i fængslet</sentence>
+    <sentence label="chancedesc">Du skal trække en Chance kort</sentence>
+    <sentence label="freeparkingdesc">SÅDAN! Du fik en gratis parkeringsplads. Du kan hvile dig indtil det bliver din tur igen</sentence>
+
+
     <!-- chancecard buttons -->
     <sentence label="moveButton">Ryk</sentence>
     <sentence label="moveButton1">1</sentence>

@@ -1,5 +1,8 @@
 package com.gruppe21.player;
 
+import javax.smartcardio.Card;
+import java.util.ArrayList;
+
 public class Player {
     private static final int MAX_NAME_LENGTH = 50;
 
@@ -12,7 +15,7 @@ public class Player {
     private int age;                    // Int age of player. Youngest player starts.
     public String[] ownedProperties;     // All owned properties of a player
     public String[] ownedCards;           // All currently owned chance cards of a player
-    private OurArrayList <ChanceCard> cards; // Array of chancecards
+    private Card[] cards;                   // Array of chancecards
 
     private int currentSquareIndex;
 

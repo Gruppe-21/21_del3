@@ -1,6 +1,7 @@
 package com.gruppe21.game.board.chancecard;
 
 import com.gruppe21.game.Game;
+import com.gruppe21.player.Player;
 
 public class ChanceCardGetOutOfJailFree extends ChanceCard{
 
@@ -8,15 +9,12 @@ public class ChanceCardGetOutOfJailFree extends ChanceCard{
         super(description);
     }
 
-    /**
-     * Game should check for if Player has
-     *  a GetOutOfJailCard.
-     *
-     *  To-do Player should have a list of
-     *  owned ChanceCards.
-    */
-    public void use(Game game){
-        game.getGuiWrapper().showMessage(description);
+    @Override
+    public void use(Game game, Player player) {
+        super.use(game, player);
+        player.prisonStatus = false;
     }
+
+
 
 }

@@ -4,19 +4,22 @@ import com.gruppe21.game.Game;
 import com.gruppe21.player.Player;
 
 public abstract class ChanceCard {
-    protected String description;
+    protected String descriptionLabel;
 
-    public ChanceCard(String description) {
-        this.description = description;
+    public ChanceCard(String descriptionLabel) {
+        this.descriptionLabel = descriptionLabel;
+    }
+
+    public void use() {
     }
 
     // Used in ChanceCardMove
-    public void use(Game game,int playerIndex,Player cardUser) {
+    public void use(Game game, int playerIndex) {
+        // Do something
+    }
+    public void use(Game game, Player player) {
         // Do something
     }
 
-    // Used in ChanceCardMoney
-    public void use(Game game, Player[] players, Player cardUser){
-        // Do something
-    }
+
 }

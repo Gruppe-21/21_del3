@@ -1,7 +1,9 @@
 package com.gruppe21.gui;
 
+import com.gruppe21.game.board.squares.PropertySquare;
 import com.gruppe21.game.board.squares.Square;
 import com.gruppe21.player.Player;
+import com.gruppe21.utils.arrayutils.OurArrayList;
 import gui_fields.GUI_Field;
 import gui_fields.GUI_Player;
 import gui_fields.GUI_Street;
@@ -21,20 +23,28 @@ public class GUIWrapper {
         players = new ArrayList<GUI_Player>();
     }
 
-
+    //TODO set the right values in fields
     // Add a list of squares and turn them into fields.
-    private void addSquares(List<Square> squareList) {
-        for (Square square : squareList) {
+    private void addSquares(OurArrayList<Square> squareList) {
+        for (Square square : squareList.toArray(new Square[0])) {
             GUI_Field field = new GUI_Street();
             field.setTitle(square.getName());
-            field.setSubText("" + square.getModifyValue());
-            field.setDescription(square.getEventText());
+            field.setSubText("");
+            field.setDescription(square.getDescription());
+            if(square.getClass() == PropertySquare.class)
+            {
+                field.setBackGroundColor(((PropertySquare)square).getColor());
+            }else {
+                field.setBackGroundColor((Color.WHITE));
+            }
+
             fields.add(field);
+
         }
     }
 
     // Has to be called every time new squares are added; Most likely only at the start of the game.
-    public void reloadGUI(List<Square> squareList) {
+    public void reloadGUI(OurArrayList<Square> squareList) {
         if (gui != null)
             gui.close();
 
@@ -54,21 +64,31 @@ public class GUIWrapper {
                 return;
         }
 
-        GUI_Player guiPlayer = new GUI_Player(player.getName());
+        GUI_Player guiPlayer = new GUI_Player(player.getName() + " " + player.getPieceAsString());
         guiPlayer.setBalance(player.getBankBalance().getBalance());
         guiPlayer.getCar().setPrimaryColor(color);
+        player.setGuiPlayer(guiPlayer);
         gui.addPlayer(guiPlayer);
         players.add(guiPlayer);
     }
 
-    public void movePlayer(int playerIndex, int currentSquareIndex, int nextSquareIndex) {
-        GUI_Player player = getPlayer(playerIndex);
-        if (player != null) {
-            fields.get(currentSquareIndex + 1).setCar(player, false);
-            fields.get(nextSquareIndex + 1).setCar(player, true);
+    public void movePlayer(Player player, int nextSquareIndex) {
+        GUI_Player guiPlayer = player.getGuiPlayer();
+        if (guiPlayer != null) {
+            fields.get(player.getCurrentSquareIndex() ).setCar(guiPlayer, false);
+            fields.get(nextSquareIndex).setCar(guiPlayer, true);
         }
     }
 
+    /*
+        public void movePlayer(int playerIndex, int currentSquareIndex, int nextSquareIndex) {
+            GUI_Player player = getPlayer(playerIndex);
+            if (player != null) {
+                fields.get(currentSquareIndex + 1).setCar(player, false);
+                fields.get(nextSquareIndex + 1).setCar(player, true);
+            }
+        }
+    */
     public void close() {
         if (gui != null)
             gui.close();
@@ -93,8 +113,15 @@ public class GUIWrapper {
         return gui.getUserButtonPressed(message, buttonText);
     }
 
+    /*
     public void updatePlayerBalance(int playerIndex, int balance) {
         GUI_Player guiPlayer = getPlayer(playerIndex);
+        if (guiPlayer != null) {
+            guiPlayer.setBalance(balance);
+        }
+    }
+*/
+    public void updatePlayerBalance(GUI_Player guiPlayer, int balance) {
         if (guiPlayer != null) {
             guiPlayer.setBalance(balance);
         }
@@ -115,7 +142,7 @@ public class GUIWrapper {
 
     public Boolean hasPlayerWithName(String name) {
         for (GUI_Player player : players) {
-            if (player.getName().equals(name)) return true;
+            if (player.getName().split(" ")[0].equals(name)) return true;
         }
         return false;
     }

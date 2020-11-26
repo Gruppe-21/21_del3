@@ -58,7 +58,7 @@ public class BankBalance {
         long timerEnd = System.currentTimeMillis();
         long totalTime = timerEnd-timerStart;
         if(totalTime > ResponsTime.getMAX_transfer()) ResponsTime.setMAX_transfer(totalTime);
-        System.out.println("Det tog "+ totalTime + "ms for transferMoney(). Maks: " + ResponsTime.getMAX_transfer());
+        System.out.println("Respons time: "+ totalTime + "ms for transferMoney() | Current max: " + ResponsTime.getMAX_transfer()+"ms");
     }
 
     /**

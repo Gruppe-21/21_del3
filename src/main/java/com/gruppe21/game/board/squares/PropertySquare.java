@@ -110,7 +110,7 @@ public class PropertySquare extends Square {
         long timerEnd = System.currentTimeMillis();
         long totalTime = timerEnd-timerStart;
         if(totalTime > ResponsTime.getMAX_owner()) ResponsTime.setMAX_owner(totalTime);
-        System.out.println("Det tog "+ totalTime + "ms for setOwner(). Maks: " + ResponsTime.getMAX_owner());
+        System.out.println("Respons time: "+ totalTime + "ms for setOwner() | Current max: " + ResponsTime.getMAX_owner()+"ms");
 
     }
 

@@ -86,7 +86,8 @@ public class Die {
         long timerEnd = System.currentTimeMillis();
         long totalTime = timerEnd-timerStart;
         if(totalTime > ResponsTime.getMAX_roll()) ResponsTime.setMAX_roll(totalTime);
-        System.out.println("Det tog "+ totalTime + "ms for rollDie(). Maks: "+ ResponsTime.getMAX_roll());
+        System.out.println("Respons time: "+ totalTime + "ms for rollDie() | Current max: "+ ResponsTime.getMAX_roll()+"ms");
+
         return faceValue;
     }
 

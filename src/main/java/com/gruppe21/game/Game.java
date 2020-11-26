@@ -316,7 +316,7 @@ public class Game {
         long timerEnd = System.currentTimeMillis();
         long totalTime = timerEnd-timerStart;
         if(totalTime > ResponsTime.getMAX_teleport()) ResponsTime.setMAX_teleport(totalTime);
-        System.out.println("Det tog "+ totalTime + "ms for teleportPlayer(). Maks: " + ResponsTime.getMAX_teleport());
+        System.out.println("Respons time: "+ totalTime + "ms for teleportPlayer() | Current max: " + ResponsTime.getMAX_teleport()+"ms");
 
     }
 

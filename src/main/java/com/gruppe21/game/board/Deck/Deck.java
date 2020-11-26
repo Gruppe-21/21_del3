@@ -42,7 +42,7 @@ public class Deck {
             long timerEnd = System.currentTimeMillis();
             long totalTime = timerEnd-timerStart;
             if(totalTime > ResponsTime.getMAX_shuffle()) ResponsTime.setMAX_shuffle(totalTime);
-            System.out.println("Det tog "+ totalTime + "ms for shuffleDeck(). Maks: "+ ResponsTime.getMAX_shuffle());
+            System.out.println("Respons time: "+ totalTime + "ms for shuffleDeck() | Current max: "+ ResponsTime.getMAX_shuffle()+"ms");
             return;
         }
       }
@@ -62,7 +62,9 @@ public class Deck {
         long timerEnd = System.currentTimeMillis();
         long totalTime = timerEnd-timerStart;
         if(totalTime > ResponsTime.getMAX_draw()) ResponsTime.setMAX_draw(totalTime);
-        System.out.println("Det tog "+ totalTime + "ms for drawCard(). Maks: "+ ResponsTime.getMAX_draw());
+        System.out.println("Respons time: "+ totalTime + "ms for drawCard() | Current max: "+ ResponsTime.getMAX_draw()+"ms");
+
+        System.out.println(ResponsTime.getAllMaxValueToString());
         return Chance;
     }
 
@@ -74,7 +76,7 @@ public class Deck {
         long timerEnd = System.currentTimeMillis();
         long totalTime = timerEnd-timerStart;
         if(totalTime > ResponsTime.getMAX_return()) ResponsTime.setMAX_return(totalTime);
-        System.out.println("Det tog "+ totalTime + "ms for returnCard(). Maks: " + ResponsTime.getMAX_return());
+        System.out.println("Respons time: "+ totalTime + "ms for returnCard() | Current max: " +ResponsTime.getMAX_return()+"ms");
     }
 }
 

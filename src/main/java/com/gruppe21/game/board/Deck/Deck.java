@@ -63,8 +63,6 @@ public class Deck {
         long totalTime = timerEnd-timerStart;
         if(totalTime > ResponsTime.getMAX_draw()) ResponsTime.setMAX_draw(totalTime);
         System.out.println("Respons time: "+ totalTime + "ms for drawCard() | Current max: "+ ResponsTime.getMAX_draw()+"ms");
-
-        System.out.println(ResponsTime.getAllMaxValueToString());
         return Chance;
     }
 

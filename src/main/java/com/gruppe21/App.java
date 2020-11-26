@@ -7,6 +7,9 @@ public class App {
         Game game = new Game();
         //Game game = new Game(new Player[]{null, null});
         game.startGame();
+
+        // Show max value of respons time:
+        System.out.println(ResponsTime.getAllMaxValueToString());
     }
 }
 

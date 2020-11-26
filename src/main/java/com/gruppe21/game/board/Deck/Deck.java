@@ -1,6 +1,7 @@
 package com.gruppe21.game.board.Deck;
 import java.util.Random;
 
+import com.gruppe21.ResponsTime;
 import com.gruppe21.game.board.chancecard.ChanceCard;
 import com.gruppe21.utils.BoardLoader;
 import com.gruppe21.utils.arrayutils.OurArrayList;
@@ -28,6 +29,8 @@ public class Deck {
     }
 
     public void shuffleDeck() {
+        long timerStart = System.currentTimeMillis();
+
         lastShuffle = 0;
         for(int i = 1; i < cards.size(); i++) {
             int rand_int = rand.nextInt(6);
@@ -35,24 +38,43 @@ public class Deck {
             temp = cards.get(i);
             cards.set(i, cards.get(rand_int));
             cards.set(rand_int, temp);
+
+            long timerEnd = System.currentTimeMillis();
+            long totalTime = timerEnd-timerStart;
+            if(totalTime > ResponsTime.getMAX_shuffle()) ResponsTime.setMAX_shuffle(totalTime);
+            System.out.println("Det tog "+ totalTime + "ms for shuffleDeck(). Maks: "+ ResponsTime.getMAX_shuffle());
             return;
         }
-    }
+      }
 
     /**
      * Draws the top card.
      * @return
      */
     public ChanceCard drawCard(){
+        long timerStart = System.currentTimeMillis();
+
         if (lastShuffle == CARDS_BEFORE_SHUFFLE) shuffleDeck();
          lastShuffle++;
          ChanceCard Chance = cards.get(0);
          cards.removeIndex(0);
-         return Chance;
+
+        long timerEnd = System.currentTimeMillis();
+        long totalTime = timerEnd-timerStart;
+        if(totalTime > ResponsTime.getMAX_draw()) ResponsTime.setMAX_draw(totalTime);
+        System.out.println("Det tog "+ totalTime + "ms for drawCard(). Maks: "+ ResponsTime.getMAX_draw());
+        return Chance;
     }
 
     public void returnCard(ChanceCard putBack){
+        long timerStart = System.currentTimeMillis();
+
         cards.add(putBack);
+
+        long timerEnd = System.currentTimeMillis();
+        long totalTime = timerEnd-timerStart;
+        if(totalTime > ResponsTime.getMAX_return()) ResponsTime.setMAX_return(totalTime);
+        System.out.println("Det tog "+ totalTime + "ms for returnCard(). Maks: " + ResponsTime.getMAX_return());
     }
 }
 

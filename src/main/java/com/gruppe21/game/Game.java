@@ -2,6 +2,7 @@ package com.gruppe21.game;
 //Todo:
 // Add AI controlled players
 
+import com.gruppe21.ResponsTime;
 import com.gruppe21.game.board.Board;
 import com.gruppe21.game.board.Deck.Deck;
 import com.gruppe21.game.board.chancecard.ChanceCard;
@@ -306,9 +307,17 @@ public class Game {
     }
 
     public void teleportPlayer(Player player, int squareIndex){
+        long timerStart = System.currentTimeMillis();
+
         guiManager.movePlayer(player, squareIndex);
         player.setCurrentSquareIndex(squareIndex);
         //board.getSquareAtIndex(squareIndex).handleLandOn(player);
+
+        long timerEnd = System.currentTimeMillis();
+        long totalTime = timerEnd-timerStart;
+        if(totalTime > ResponsTime.getMAX_teleport()) ResponsTime.setMAX_teleport(totalTime);
+        System.out.println("Det tog "+ totalTime + "ms for teleportPlayer(). Maks: " + ResponsTime.getMAX_teleport());
+
     }
 
     public void teleportPlayer(Player player, Square square){

@@ -1,5 +1,6 @@
 package com.gruppe21.game.board.squares;
 
+import com.gruppe21.ResponsTime;
 import com.gruppe21.gui.GUIManager;
 import com.gruppe21.player.Player;
 import com.gruppe21.utils.localisation.Localisation;
@@ -82,6 +83,8 @@ public class PropertySquare extends Square {
     }
 
     public void setOwner(Player owner) {
+        long timerStart = System.currentTimeMillis();
+
         if (owner == getOwner()) return;
 
         if (getOwner() != null){
@@ -103,6 +106,12 @@ public class PropertySquare extends Square {
             }
         }
         this.updateGuiInformation();
+
+        long timerEnd = System.currentTimeMillis();
+        long totalTime = timerEnd-timerStart;
+        if(totalTime > ResponsTime.getMAX_owner()) ResponsTime.setMAX_owner(totalTime);
+        System.out.println("Det tog "+ totalTime + "ms for setOwner(). Maks: " + ResponsTime.getMAX_owner());
+
     }
 
     private void setColor(Color color) {

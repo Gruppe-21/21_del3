@@ -1,5 +1,6 @@
 package com.gruppe21.player;
 
+import com.gruppe21.ResponsTime;
 import com.gruppe21.gui.GUIManager;
 
 public class BankBalance {
@@ -44,6 +45,8 @@ public class BankBalance {
      *
      */
     public void transferMoney(int debit, Player creditor){
+        long timerStart = System.currentTimeMillis();
+
         if (creditor == parent) return;
         if (getBalance() - debit < 0) {
             debit -= parent.sellProperties(debit, creditor);
@@ -52,6 +55,10 @@ public class BankBalance {
         if (creditor != null){ //creditor == null -> creditor is the bank
             creditor.getBankBalance().addBalance(debit);
         }
+        long timerEnd = System.currentTimeMillis();
+        long totalTime = timerEnd-timerStart;
+        if(totalTime > ResponsTime.getMAX_transfer()) ResponsTime.setMAX_transfer(totalTime);
+        System.out.println("Det tog "+ totalTime + "ms for transferMoney(). Maks: " + ResponsTime.getMAX_transfer());
     }
 
     /**

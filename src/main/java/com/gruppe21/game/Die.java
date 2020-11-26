@@ -12,6 +12,8 @@ package com.gruppe21.game;
  * @author https://github.com/tobiasmaneschijn/21_del1
  */
 
+import com.gruppe21.ResponsTime;
+
 /**
  * This class is from CDIO1 (an earlier project) by the same Authors.
  * Code descriptions, class' and methods has been translated to english.
@@ -77,7 +79,14 @@ public class Die {
      * @return value of die after throw as an integer.
      */
     public int rollDie() {
+        long timerStart = System.currentTimeMillis();
+
         faceValue = (int) (Math.random() * faceAmount + 1);
+
+        long timerEnd = System.currentTimeMillis();
+        long totalTime = timerEnd-timerStart;
+        if(totalTime > ResponsTime.getMAX_roll()) ResponsTime.setMAX_roll(totalTime);
+        System.out.println("Det tog "+ totalTime + "ms for rollDie(). Maks: "+ ResponsTime.getMAX_roll());
         return faceValue;
     }
 

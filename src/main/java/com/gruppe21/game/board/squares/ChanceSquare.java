@@ -1,6 +1,7 @@
 package com.gruppe21.game.board.squares;
 
 import com.gruppe21.game.Game;
+import com.gruppe21.gui.GUIManager;
 import com.gruppe21.player.Player;
 
 public class ChanceSquare extends Square {
@@ -12,6 +13,7 @@ public class ChanceSquare extends Square {
     @Override
     public void handleLandOn(Player player, Game game) {
         super.handleLandOn(player, game);
+
 
         //String takeCardMessage = Localisation.getInstance().getStringValue("takecard");
         //GUIManager.getInstance().waitForUserButtonPress(takeCardMessage, "✓");

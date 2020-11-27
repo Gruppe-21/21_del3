@@ -55,6 +55,10 @@ public class GUIWrapper {
         }
     }
 
+    public void showChanceCard(String text){
+        gui.displayChanceCard(text);
+    }
+
     public void setFieldTitle(Square square, String title){
         GUI_Field field = getFieldFromSquare(square);
         setFieldTitle(field, title);

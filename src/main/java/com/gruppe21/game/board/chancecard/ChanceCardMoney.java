@@ -27,6 +27,9 @@ public class ChanceCardMoney extends ChanceCard {
     public void use(Game game,Player player) {
         super.use(game, player);
         Localisation localisation = Localisation.getInstance();
+        GUIManager.getInstance().showChanceCard( localisation.getStringValue(descriptionOnUseLabel,
+                localisation.getStringValue("currency", Integer.toString(money)),
+                localisation.getStringValue("bankName")));
 
         GUIManager.getInstance().waitForUserAcknowledgement(
                 localisation.getStringValue(descriptionOnUseLabel,

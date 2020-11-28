@@ -37,6 +37,7 @@ public class ChanceCardMove extends ChanceCard {
         } else use(game, player);
     }
 
+
     @Override
     public void use(Game game, Player player) {
         super.use(game, player);
@@ -79,6 +80,7 @@ public class ChanceCardMove extends ChanceCard {
             vaildSquaresNameLabels[i] = vaildSquares[i].getNameLabel();
         }
         //Todo: should probably indicate if a square is already owned
+        GUIManager.getInstance().showChanceCard(Localisation.getInstance().getStringValue(descriptionOnUseLabel));
         PropertySquare chosenSquare = (PropertySquare) game.getBoard().getSquareFromLabel(GUIManager.getInstance().waitForUserButtonPress(Localisation.getInstance().getStringValue(descriptionOnUseLabel, vaildSquaresNameLabels)));
         game.teleportPlayer(player, chosenSquare);
         Player propertyOwner = chosenSquare.getOwner();
@@ -95,6 +97,8 @@ public class ChanceCardMove extends ChanceCard {
         String description = localisation.getStringValue(descriptionOnUseLabel);
         String moveButton = localisation.getStringValue("moveButton");
         String takeButton = localisation.getStringValue("takeButton");
+        GUIManager.getInstance().showChanceCard(Localisation.getInstance().getStringValue(descriptionOnUseLabel));
+
         if (GUIManager.getInstance().getUserChoice(description, moveButton, takeButton)) {
             game.movePlayerBy(player, 1);
         } else {
@@ -110,6 +114,7 @@ public class ChanceCardMove extends ChanceCard {
             moveButtons[i] = localisation.getStringValue("moveButton" + (i + 1));
         }
 
+        GUIManager.getInstance().showChanceCard(Localisation.getInstance().getStringValue(descriptionOnUseLabel));
         String moveUpToResult = GUIManager.getInstance().waitForUserButtonPress(Localisation.getInstance().getStringValue(descriptionOnUseLabel), moveButtons);
         for (int i = 0; i < numMoveButtons; i++) {
             if (moveUpToResult.equals(moveButtons[i])) {
@@ -131,7 +136,9 @@ public class ChanceCardMove extends ChanceCard {
     }
 
     private void move(Game game, Player player, Square target) {
+        GUIManager.getInstance().showChanceCard(Localisation.getInstance().getStringValue(descriptionOnUseLabel));
         GUIManager.getInstance().waitForUserButtonPress(Localisation.getInstance().getStringValue(descriptionOnUseLabel));
+
         game.movePlayer(player, target);
     }
 

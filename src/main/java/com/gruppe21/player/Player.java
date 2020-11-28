@@ -219,7 +219,8 @@ public class Player {
 
     public void drawChanceCard(Deck deck, Game IShouldNotBeHere){
         getOwnedCards().add(deck.drawCard());
-        getOwnedCards().get(0).onDraw(IShouldNotBeHere, this);
+        ChanceCard card = getOwnedCards().get(0);
+        card.onDraw(IShouldNotBeHere, this);
     }
 
     public void returnCard(Deck deck, ChanceCard chanceCard){

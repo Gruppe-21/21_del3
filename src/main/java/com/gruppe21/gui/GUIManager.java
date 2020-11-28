@@ -52,6 +52,7 @@ public class GUIManager {
         }
     }
 
+
     public void setGUIDice(Die[] dice) {
         if (isTest) return;
         //TODO: fix
@@ -167,9 +168,12 @@ public class GUIManager {
 
         }
         guiWrapper.updateGUIFields();
-
-
     }
 
 
+    public void showChanceCard(String text){
+        guiWrapper.showChanceCard(text);
+    }
+
 }
+
